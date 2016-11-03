@@ -35,8 +35,8 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
     $user_group = $_POST["user_group"];
 
     if ($user_group == "SRXLOAN") {
-        $first_name = test_input($_POST["first_name_sconul"]);
-        $last_name = test_input($_POST["last_name_sconul"]);
+        $first_name = test_input(ucwords(strtolower($_POST["first_name_sconul"])));
+        $last_name = test_input(ucwords(strtolower($_POST["last_name_sconul"])));
         $password = xxxxxxxxxxxxxx;
         $campus_code = test_input($_POST["campus_code_sconul"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_sconul"])). "Z";
@@ -44,10 +44,10 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         if ($expiry_date > date("Y-m-d", strtotime("+3 years"))){
             $expiry_date = date("Y-m-d", strtotime("+3 years"));
         }
-        $line1 = test_input($_POST["line1_sconul"]);
-        $line2 = test_input($_POST["line2_sconul"]);
-        $city = test_input($_POST["city_sconul"]);
-        $postcode = test_input($_POST["postcode_sconul"]);
+        $line1 = test_input(ucwords(strtolower($_POST["line1_sconul"])));
+        $line2 = test_input(ucwords(strtolower($_POST["line2_sconul"])));
+        $city = test_input(ucwords(strtolower($_POST["city_sconul"])));
+        $postcode = test_input(strtoupper($_POST["postcode_sconul"]));
         $email_address = test_input($_POST["email_address_sconul"]);
         $phone_number = test_input($_POST["phone_number_sconul"]);
         $ucat1 = test_input($_POST["ucat1_sconul"]);
@@ -59,8 +59,8 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         }
     }
     elseif($user_group == "NHS") {
-        $first_name = test_input($_POST["first_name_NHS"]);
-        $last_name = test_input($_POST["last_name_NHS"]);
+        $first_name = test_input(ucwords(strtolower($_POST["first_name_NHS"])));
+        $last_name = test_input(ucwords(strtolower($_POST["last_name_NHS"])));
         $password = xxxxxxxxxxxxxx;
         $campus_code = test_input($_POST["campus_code_NHS"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_NHS"])). "Z";
@@ -68,10 +68,10 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         if ($expiry_date > date("Y-m-d", strtotime("+1 year"))){
             $expiry_date = date("Y-m-d", strtotime("+1 year"));
         }
-        $line1 = test_input($_POST["line1_NHS"]);
-        $line2 = test_input($_POST["line2_NHS"]);
-        $city = test_input($_POST["city_NHS"]);
-        $postcode = test_input($_POST["postcode_NHS"]);
+        $line1 = test_input(ucwords(strtolower($_POST["line1_NHS"])));
+        $line2 = test_input(ucwords(strtolower($_POST["line2_NHS"])));
+        $city = test_input(ucwords(strtolower($_POST["city_NHS"])));
+        $postcode = test_input(strtoupper($_POST["postcode_NHS"]));
         $email_address = test_input($_POST["email_address_NHS"]);
         $department = test_input($_POST["department_NHS"]);
         $phone_number = test_input($_POST["phone_number_NHS"]);
@@ -265,31 +265,31 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         }
     }
     elseif($user_group == "CLLOCAL") {
-        $first_name = test_input($_POST["first_name_CLLOCAL"]);
-        $last_name = test_input($_POST["last_name_CLLOCAL"]);
+        $first_name = test_input(ucwords(strtolower($_POST["first_name_CLLOCAL"])));
+        $last_name = test_input(ucwords(strtolower($_POST["last_name_CLLOCAL"])));
         $password = xxxxxxxxxxxxxx;
         $campus_code = test_input($_POST["campus_code_CLLOCAL"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_CLLOCAL"])). "Z";
         $expiry_date = date("Y-m-d", strtotime("+1 year")). "Z";
-        $line1 = test_input($_POST["line1_CLLOCAL"]);
-        $line2 = test_input($_POST["line2_CLLOCAL"]);
-        $city = test_input($_POST["city_CLLOCAL"]);
-        $postcode = test_input($_POST["postcode_CLLOCAL"]);
+        $line1 = test_input(ucwords(strtolower($_POST["line1_CLLOCAL"])));
+        $line2 = test_input(ucwords(strtolower($_POST["line2_CLLOCAL"])));
+        $city = test_input(ucwords(strtolower($_POST["city_CLLOCAL"])));
+        $postcode = test_input(strtoupper($_POST["postcode_CLLOCAL"]));
         $email_address = test_input($_POST["email_address_CLLOCAL"]);
         $phone_number = test_input($_POST["phone_number_CLLOCAL"]);
         $ucat1 = test_input($_POST["ucat1_CLLOCAL"]);
     }
     elseif($user_group == "ALLALUMNUS") {
-        $first_name = test_input($_POST["first_name_ALUMNUS"]);
-        $last_name = test_input($_POST["last_name_ALUMNUS"]);
+        $first_name = test_input(ucwords(strtolower($_POST["first_name_ALUMNUS"])));
+        $last_name = test_input(ucwords(strtolower($_POST["last_name_ALUMNUS"])));
         $password = xxxxxxxxxxxxxx;
         $campus_code = test_input($_POST["campus_code_ALUMNUS"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_ALUMNUS"])). "Z";
         $expiry_date = date("Y-m-d", strtotime("+1 year")). "Z";
-        $line1 = test_input($_POST["line1_ALUMNUS"]);
-        $line2 = test_input($_POST["line2_ALUMNUS"]);
-        $city = test_input($_POST["city_ALUMNUS"]);
-        $postcode = test_input($_POST["postcode_ALUMNUS"]);
+        $line1 = test_input(ucwords(strtolower($_POST["line1_ALUMNUS"])));
+        $line2 = test_input(ucwords(strtolower($_POST["line2_ALUMNUS"])));
+        $city = test_input(ucwords(strtolower($_POST["city_ALUMNUS"])));
+        $postcode = test_input(strtoupper($_POST["postcode_ALUMNUS"]));
         $email_address = test_input($_POST["email_address_ALUMNUS"]);
         $phone_number = test_input($_POST["phone_number_ALUMNUS"]);
         $ucat1 = test_input($_POST["ucat1_ALUMNUS"]);
@@ -297,16 +297,16 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         $note1 = "Completed studies in ".$_POST["study_year_ALUMNUS"];
     }
     elseif($user_group == "CLREF") {
-        $first_name = test_input($_POST["first_name_CLREF"]);
-        $last_name = test_input($_POST["last_name_CLREF"]);
+        $first_name = test_input(ucwords(strtolower($_POST["first_name_CLREF"])));
+        $last_name = test_input(ucwords(strtolower($_POST["last_name_CLREF"])));
         $password = xxxxxxxxxxxxxx;
         $campus_code = test_input($_POST["campus_code_CLREF"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_CLREF"])). "Z";
         $expiry_date = date("Y-m-d", strtotime("+1 year")). "Z";
-        $line1 = test_input($_POST["line1_CLREF"]);
-        $line2 = test_input($_POST["line2_CLREF"]);
-        $city = test_input($_POST["city_CLREF"]);
-        $postcode = test_input($_POST["postcode_CLREF"]);
+        $line1 = test_input(ucwords(strtolower($_POST["line1_CLREF"])));
+        $line2 = test_input(ucwords(strtolower($_POST["line2_CLREF"])));
+        $city = test_input(ucwords(strtolower($_POST["city_CLREF"])));
+        $postcode = test_input(strtoupper($_POST["postcode_CLREF"]));
         $email_address = test_input($_POST["email_address_CLREF"]);
         $phone_number = test_input($_POST["phone_number_CLREF"]);
         $note1 = test_input($_POST["library_use_CLREF"]);
