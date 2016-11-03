@@ -38,7 +38,7 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         $first_name = test_input(ucwords(strtolower($_POST["first_name_sconul"])));
         $last_name = test_input(ucwords(strtolower($_POST["last_name_sconul"])));
         $password = xxxxxxxxxxxxxx;
-        $campus_code = test_input($_POST["campus_code_sconul"]);
+        $campus_code = "CENTRAL";
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_sconul"])). "Z";
         $expiry_date = date("Y-m-d", strtotime($_POST["expiry_date_sconul"])). "Z";
         if ($expiry_date > date("Y-m-d", strtotime("+3 years"))){
@@ -268,7 +268,6 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         $first_name = test_input(ucwords(strtolower($_POST["first_name_CLLOCAL"])));
         $last_name = test_input(ucwords(strtolower($_POST["last_name_CLLOCAL"])));
         $password = xxxxxxxxxxxxxx;
-        $campus_code = test_input($_POST["campus_code_CLLOCAL"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_CLLOCAL"])). "Z";
         $expiry_date = date("Y-m-d", strtotime("+1 year")). "Z";
         $line1 = test_input(ucwords(strtolower($_POST["line1_CLLOCAL"])));
@@ -283,7 +282,7 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         $first_name = test_input(ucwords(strtolower($_POST["first_name_ALUMNUS"])));
         $last_name = test_input(ucwords(strtolower($_POST["last_name_ALUMNUS"])));
         $password = xxxxxxxxxxxxxx;
-        $campus_code = test_input($_POST["campus_code_ALUMNUS"]);
+        $campus_code = "CENTRAL";
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_ALUMNUS"])). "Z";
         $expiry_date = date("Y-m-d", strtotime("+1 year")). "Z";
         $line1 = test_input(ucwords(strtolower($_POST["line1_ALUMNUS"])));
@@ -300,7 +299,6 @@ $first_name = $last_name = $user_group = $campus_code = $birth_date = $expiry_da
         $first_name = test_input(ucwords(strtolower($_POST["first_name_CLREF"])));
         $last_name = test_input(ucwords(strtolower($_POST["last_name_CLREF"])));
         $password = xxxxxxxxxxxxxx;
-        $campus_code = test_input($_POST["campus_code_CLREF"]);
         $birth_date = date("Y-m-d", strtotime($_POST["birth_date_CLREF"])). "Z";
         $expiry_date = date("Y-m-d", strtotime("+1 year")). "Z";
         $line1 = test_input(ucwords(strtolower($_POST["line1_CLREF"])));
