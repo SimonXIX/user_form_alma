@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!--
 # @name: reg_form.html
-# @version: 0.6
+# @version: 1.7
 # @license: GNU General Public License version 3 (GPLv3) <https://www.gnu.org/licenses/gpl-3.0.en.html>
 # @purpose: Submit user data to Imperial College Library's Ex Libris Alma library management system
 # @author: Karine Larose <k.larose@imperial.ac.uk>
@@ -16,15 +16,15 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="reg_form.css">
+    <link rel="stylesheet" href="reg_form/reg_form.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
     <title>Library membership application form - Imperial College London</title>
 </head>
 
 <body>
     <!--link to jQuery libraries-->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="reg_form/jquery-1.12.4.js"></script>
+    <script src="reg_form/jquery-ui.1.12.0.js"></script>
     <!--JavaScript for datepicker-->
     <script>
         $(document).ready(function() {
@@ -42,7 +42,7 @@
 
     <div class="bootstrap-frm">
         <div class="ICLogo">
-            <a href="http:imperial.ac.uk"><img src="logoimage.jpg" alt="Imperial College London" class="ICLogo"></a>
+            <a href="http:imperial.ac.uk"><img src="reg_form/logoimage.jpg" alt="Imperial College London" class="ICLogo"></a>
         </div>
 
         <br/>
@@ -60,6 +60,7 @@
                     <option value="CLREF">Member of the public</option>
                     <option value="NHS">NHS user</option>
                     <option value="SRXLOAN">SCONUL Access Scheme user</option>
+                    <option value="MRC">Medical Research Council staff</option>
                 </select>
             <br/>
         </div>
@@ -67,7 +68,7 @@
     <!--registration forms linking to PHP script-->
 
     <!--Sconul Access Scheme users-->
-        <form action="reg_form.php" method="POST">
+        <form action="reg_form/reg_form.php" method="POST">
         <div id="user_group_SRXLOAN" class="user_group_input" style="display: none;">
             <input type="hidden" name="user_group" value="SRXLOAN">
             <fieldset>
@@ -76,6 +77,18 @@
                 <input type="text" name="first_name_sconul" required><br/><br/>
                 <label>What is your last name?</label>
                 <input type="text" name="last_name_sconul" required><br/><br/>
+                <label>What is your title?</label>
+                <select name="title_sconul" required>
+                    <option selected="selected" value="">Please choose</option>
+                    <option value="MX">Mx</option>
+                    <option value="MS">Ms</option>
+                    <option value="MISS">Miss</option>
+                    <option value="MR">Mr</option>
+                    <option value="MRS">Mrs</option>
+                    <option value="DR">Dr</option>
+                    <option value="PROF">Prof</option>
+                </select>
+                <br/><br/>
                 <label>What is your email address?</label>
                 <input type="email" name="email_address_sconul" id="email" required><br/><br/>
                 <label>What is your phone number?</label>
@@ -84,10 +97,10 @@
             <fieldset>
                 <legend>Additional contact details</legend><br/>
                 <label>What is your postal address?</label><br/>
-                <label>Street name 1</label><input type="text" name="line1_sconul" /><br/><br/>
+                <label>Street name 1</label><input type="text" name="line1_sconul" required><br/><br/>
                 <label>Street name 2</label><input type="text" name="line2_sconul" /><br/><br/>
-                <label>City</label><input type="text" name="city_sconul" /><br/><br/>
-                <label>Postcode</label><input type="text" name="postcode_sconul" /><br/><br/>
+                <label>City</label><input type="text" name="city_sconul" required><br/><br/>
+                <label>Postcode</label><input type="text" name="postcode_sconul" required><br/><br/>
                 </fieldset><br/>
             <fieldset>
                 <legend>Registration details </legend><br/>
@@ -95,64 +108,190 @@
                 <label class="small">Please select 'Other' if not listed</label>
                 <select name="ucat1_sconul" required>
                     <option selected="selected" value="">Please choose</option>
-                    <option value="BIRKBECK">Birkbeck, University of London</option>
+                    <option value="ABERTAY">Abertay University</option>
+                    <option value="ABER">Aberytswyth University</option>
+                    <option value="ANGLIA">Anglia Ruskin University</option>
+                    <option value="ARTSBOURNE">Arts University Bournemouth</option>
+                    <option value="ASTON">Aston University</option>
+                    <option value="BANGOR">Bangor University</option>
+                    <option value="BATHSPA">Bath Spa University</option>
+                    <option value="BIRKBECK">Birkbeck College</option>
+                    <option value="BIRMCITY">Birmingham City University</option>
+                    <option value="BISHOP">Bishop Grosseteste University</option>
+                    <option value="BOURNE">Bournemouth University</option>
+                    <option value="BL">British Library</option>
                     <option value="BRUNEL">Brunel University</option>
                     <option value="BUCKS">Buckinghamshire New University</option>
-                    <option value="CANTERBURY">Canterbury Christ Church University</option>
+                    <option value="CANTERBURY">Canterbury Christ Church Univ Coll</option>
                     <option value="CARDIFFMET">Cardiff Metropolitan University</option>
                     <option value="CARDIFF">Cardiff University</option>
+                    <option value="BALLET">Central School of Ballet</option>
                     <option value="CITY">City, University of London</option>
+                    <option value="CDD">Conservatoire for Dance & Drama</option>
                     <option value="COURTAULD">Courtauld Institute of Art</option>
+                    <option value="COVENTRY">Coventry University</option>
                     <option value="CRANFIELD">Cranfield University</option>
-                    <option value="GOLDSMITHS">Goldsmiths, University of London</option>
+                    <option value="DEMONT">De Montfort University</option>
+                    <option value="DUBLIN">Dublin City University</option>
+                    <option value="DIT">Dublin Institute of Technology</option>
+                    <option value="EDGE">Edge Hill University</option>
+                    <option value="ENU">Edinburgh Napier University</option>
+                    <option value="FALMOUTH">Falmouth University</option>
+                    <option value="GCU">Glasgow Caledonian University</option>
+                    <option value="GSA">Glasgow School of Art</option>
+                    <option value="GLYNDWR">Glyndwr University</option>
+                    <option value="GOLDSMITHS">Goldsmith's College</option>
+                    <option value="GUILDHALL">Guildhall School of Music & Drama</option>
+                    <option value="HARPER">Harper-Adams University</option>
+                    <option value="HERIOT">Heriot-Watt University</option>
+                    <option value="HEYTHROP">Heythrop College</option>
+                    <option value="IALS">Institute of Advanced Legal Studies, University of London</option>
+                    <option value="ICR">Institute of Cancer Research</option>
+                    <option value="IHR">Institute of Historical Research, University of London</option>
                     <option value="KINGS">King's College London</option>
                     <option value="KINGSTON">Kingston University</option>
                     <option value="LANCASTER">Lancaster University</option>
+                    <option value="LBU">Leeds Beckett University</option>
+                    <option value="LCA">Leeds College of Art</option>
+                    <option value="LCM">Leeds College of Music</option>
+                    <option value="LTU">Leeds Trinity University</option>
+                    <option value="LEO">Leo Baeck College</option>
+                    <option value="LISU">LISU</option>
+                    <option value="LH">Liverpool Hope University</option>
+                    <option value="LJMU">Liverpool John Moores University</option>
+                    <option value="LSTM">Liverpool School of Tropical Medicine</option>
                     <option value="LONDONBUS">London Business School</option>
+                    <option value="LCDS">London Contemporary Dance School</option>
                     <option value="LONDONMET">London Metropolitan University</option>
                     <option value="LSE">London School of Economics</option>
-                    <option value="LSHTM">London School of Hygiene & Tropical Medicine</option>
+                    <option value="LSHTM">London School of Hygiene</option>
                     <option value="SOUTHBANK">London South Bank University</option>
                     <option value="LOUGHBORO">Loughborough University</option>
+                    <option value="MMU">Manchester Metropolitan University</option>
+                    <option value="MANCHESTER">Manchester University</option>
+                    <option value="MAYNOOTH">Maynooth University</option>
                     <option value="MIDDLESEX">Middlesex University</option>
+                    <option value="IRELAND">National Library of Ireland</option>
+                    <option value="SCOTLAND">National Library of Scotland</option>
+                    <option value="WALES">National Library of Wales</option>
+                    <option value="GALWAY">National University of Ireland, Galway</option>
                     <option value="NEWCASTLE">Newcastle University</option>
+                    <option value="NORTHERN">Northern School of Contemporary Dance</option>
+                    <option value="NORTHUMBRIA">Northumbria University</option>
+                    <option value="NORWICH">Norwich University of the Arts</option>
+                    <option value="NOTTINGHAMTRENT">Nottingham Trent University</option>
                     <option value="OPENUNIV">Open University</option>
                     <option value="OXFBROOKES">Oxford Brookes University</option>
-                    <option value="QMW">Queen Mary, University of London</option>
-                    <option value="ROYALHOLL">Royal Holloway, University of London</option>
-                    <option value="SOAS">SOAS, University of London</option>
-                    <option value="STGHMS">St George's, University of London</option>
-                    <option value="STMARYCOLL">St Mary's University, Twickenham</option>
+                    <option value="QMU">Queen Margaret University</option>
+                    <option value="QMW">Queen Mary University of London</option>
+                    <option value="QUEENS">Queen's University Belfast</option>
+                    <option value="RAMBERT">Rambert School of Ballet and Contemporary Dance</option>
+                    <option value="REGENTS">Regent's University London</option>
+                    <option value="RGU">Robert Gorden University</option>
+                    <option value="ROSEBRUFORD">Rose Bruford College</option>
+                    <option value="RAU">Royal Agricultural University</option>
+                    <option value="RCSSD">Royal Central School of Speech and Drama</option>
+                    <option value="RCOA">Royal College of Art</option>
+                    <option value="RCOM">Royal College of Music</option>
+                    <option value="RCPSG">Royal College of Physicians and Surgeons of Glasgow</option>
+                    <option value="RCSI">Royal College of Surgeons in Ireland</option>
+                    <option value="RCSE">Royal College of Surgeons of England</option>
+                    <option value="RCS">Royal Conservatoire of Scotland</option>
+                    <option value="ROYALHOLL">Royal Holloway</option>
+                    <option value="RIBA">Royal Institute of British Architects</option>
+                    <option value="RNCM">Royal Northern College of Music</option>
+                    <option value="RVC">Royal Veterinary College</option>
+                    <option value="RWCMD">Royal Welsh College of Music & Drama</option>
+                    <option value="SOAS">School of Oriental & African Studies</option>
+                    <option value="HALLAM">Sheffield Hallam University</option>
+                    <option value="SOLENT">Southampton Solent University</option>
+                    <option value="SRUC">SRUC</option>
+                    <option value="STGEORGES">St George's University of London</option>
+                    <option value="STMARYCOLL">St Mary's University</option>
+                    <option value="STMARYS">St Mary's University College, Belfast</option>
+                    <option value="STAFFORDSHIRE">Staffordshire University</option>
+                    <option value="SWANSEA">Swansea University</option>
+                    <option value="TATE">Tate Library</option>
+                    <option value="TEESSIDE">Teesside University</option>
+                    <option value="TRINITY">Trinity College Dublin</option>
+                    <option value="JERWOOD">Trinity Laban</option>
+                    <option value="ULSTER">Ulster University</option>
+                    <option value="MEDWAY">Universities at Medway</option>
+                    <option value="UCB">University College Birmingham</option>
+                    <option value="UCC">University College Cork</option>
+                    <option value="UCD">University College Dublin</option>
                     <option value="UCL">University College London</option>
+                    <option value="UCA">University for the Creative Arts</option>
                     <option value="ABERDEEN">University of Aberdeen</option>
                     <option value="BATH">University of Bath</option>
                     <option value="BEDFORDSHR">University of Bedfordshire</option>
                     <option value="BIRMINGHAM">University of Birmingham</option>
+                    <option value="BOLTON">University of Bolton</option>
+                    <option value="BRADFORD">University of Bradford</option>
+                    <option value="BRIGHTON">University of Brighton</option>
                     <option value="BRISTOL">University of Bristol</option>
+                    <option value="BUCKINGHAM">University of Buckingham</option>
                     <option value="CAMBRIDGE">University of Cambridge</option>
-                    <option value="DURHAM">Durham University</option>
+                    <option value="LANCASHIRE">University of Central Lancashire</option>
+                    <option value="CHESTER">University of Chester</option>
+                    <option value="CHICHESTER">University of Chichester</option>
+                    <option value="CUMBRIA">University of Cumbria</option>
+                    <option value="DERBY">University of Derby</option>
+                    <option value="DUNDEE">University of Dundee</option>
+                    <option value="DURHAM">University of Durham</option>
                     <option value="EASTANGLIA">University of East Anglia</option>
+                    <option value="UEL">University of East London</option>
+                    <option value="EDINBURGH">University of Edinburgh</option>
                     <option value="ESSEX">University of Essex</option>
                     <option value="EXETER">University of Exeter</option>
                     <option value="GLASGOW">University of Glasgow</option>
+                    <option value="GLOUCESTERSHIRE">University of Gloucestershire</option>
+                    <option value="GREENWICH">University of Greenwich</option>
                     <option value="HERTS">University of Hertfordshire</option>
-                    <option value="KENT">University of Kent</option>
+                    <option value="HUDDERSFIELD">University of Huddersfield</option>
+                    <option value="HULL">University of Hull</option>
+                    <option value="KEELE">University of Keele</option>
+                    <option value="KENT">University of Kent at Canterbury</option>
                     <option value="LEEDS">University of Leeds</option>
                     <option value="LEICESTER">University of Leicester</option>
-                    <option value="MANCHESTER">University of Manchester</option>
+                    <option value="LIMERICK">University of Limerick</option>
+                    <option value="LINCOLN">University of Lincoln</option>
+                    <option value="LIVERPOOL">University of Liverpool</option>
+                    <option value="SHL">University of London, Senate House Libraries</option>
+                    <option value="NORTHAMPTON">University of Northampton</option>
                     <option value="NOTTINGHAM">University of Nottingham</option>
                     <option value="OXFORD">University of Oxford</option>
+                    <option value="PLYMOUTH">University of Plymouth</option>
+                    <option value="PORTSMOUTH">University of Portsmouth</option>
                     <option value="READING">University of Reading</option>
                     <option value="ROEHAMPTON">University of Roehampton</option>
+                    <option value="SALFORD">University of Salford</option>
                     <option value="SHEFFIELD">University of Sheffield</option>
+                    <option value="SOUTHWALES">University of South Wales</option>
                     <option value="SOUTHAMPT">University of Southampton</option>
+                    <option value="STANDREWS">University of St Andrews</option>
+                    <option value="STMARK">University of St Mark and St John</option>
+                    <option value="STIRLING">University of Stirling</option>
+                    <option value="STRATHCLYDE">University of Strathclyde</option>
+                    <option value="SUFFOLK">University of Suffolk</option>
+                    <option value="SUNDERLAND">University of Sunderland</option>
                     <option value="SURREY">University of Surrey</option>
                     <option value="SUSSEX">University of Sussex</option>
+                    <option value="ARTS">University of the Arts London</option>
+                    <option value="HIGHLANDS">University of the Highlands and Islands</option>
+                    <option value="WESTENG">University of the West of England</option>
+                    <option value="WESTSCOT">University of the West of Scotland</option>
+                    <option value="STDAVID">University of Wales</option>
                     <option value="WARWICK">University of Warwick</option>
                     <option value="UWL">University of West London</option>
                     <option value="WESTMINST">University of Westminster</option>
+                    <option value="WINCHESTER">University of Winchester</option>
                     <option value="WOLVERHAMP">University of Wolverhampton</option>
+                    <option value="WORCESTER">University of Worcester</option>
                     <option value="YORK">University of York</option>
+                    <option value="WELLCOME">Wellcome Library</option>
+                    <option value="WRITTLE">Writtle University College</option>
+                    <option value="YORKSTJOHN">York St John University</option>
                     <option value="XX">Other</option>
                 </select> 
                 <br/><br/>
@@ -174,10 +313,10 @@
                 </div>
                 <label>What is the expiry date shown on your SCONUL Access confirmation email?</label>
                 <input class="datepicker" name="expiry_date_sconul"  placeholder="dd-mm-yyyy"/><br/><br/><br/>
-                <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
+                <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
                 <br/><br/><br/>
                 <label>Data Protection notice</label>
-                <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information to provide services and to monitor library use. We do not disclose information about you to anyone else.</label>
+                <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information, in accordance with our <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/data-protection/">data protection policy</a> to provide services and monitor library use. We do not disclose information about you to anyone else.</label>
                 <input type="checkbox" name="DPN" value="true" required>I accept the terms and conditions<br/><br/>
             
             </fieldset><br/>
@@ -189,7 +328,7 @@
          
 
         <!--NHS users-->
-        <form action="reg_form.php" method="POST">
+        <form action="reg_form/reg_form.php" method="POST">
             <div id="user_group_NHS" class="user_group_input" style="display: none;">
                 <input type="hidden" name="user_group" value="NHS">
                 <fieldset>
@@ -198,18 +337,30 @@
                     <input type="text" name="first_name_NHS" required><br/><br/>
                     <label>What is your last name?</label>
                     <input type="text" name="last_name_NHS" required><br/><br/>
+                    <label>What is your title?</label>
+                    <select name="title_NHS" required>
+                        <option selected="selected" value="">Please choose</option>
+                        <option value="MX">Mx</option>
+                        <option value="MS">Ms</option>
+                        <option value="MISS">Miss</option>
+                        <option value="MR">Mr</option>
+                        <option value="MRS">Mrs</option>
+                        <option value="DR">Dr</option>
+                        <option value="PROF">Prof</option>
+                    </select>
+                    <br/><br/>
                     <label>What is your email address?</label>
                     <input type="email" name="email_address_NHS" id="email" required><br/><br/>
                     <label>What is your date of birth?</label>
-                    <input class="datepicker" name="birth_date_NHS"  placeholder="dd-mm-yyyy"/><br/><br/>
+                    <input class="datepicker" name="birth_date_NHS"  placeholder="dd-mm-yyyy" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Additional contact details</legend><br/>
                     <label>What is your address?</label><br/>
-                    <label>Street name 1</label><input type="text" name="line1_NHS" /><br/><br/>
+                    <label>Street name 1</label><input type="text" name="line1_NHS" required><br/><br/>
                     <label>Street name 2</label><input type="text" name="line2_NHS" /><br/><br/>
-                    <label>City</label><input type="text" name="city_NHS" /><br/><br/>
-                    <label>Postcode</label><input type="text" name="postcode_NHS" /><br/><br/>
+                    <label>City</label><input type="text" name="city_NHS" required><br/><br/>
+                    <label>Postcode</label><input type="text" name="postcode_NHS" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Registration details </legend><br/>
@@ -220,23 +371,18 @@
                         <option value="placement">NHS placement student</option>
                     </select><br/><br/>
                     <div id="nhs_status_trust" class="nhs_status_input" style="display: none;">
-                        <label>Are you a Medical Research Council staff member?</label>
-                        <input type="radio" name="mrc_NHS" value="y">Yes
-                        <input type="radio" name="mrc_NHS" value="n">No
-                        <br/><br/>
                         <label>Which NHS Trust are you employed by?</label>
                         <select name="ucat1_trust_NHS" >
                             <option selected="selected" value="">Please choose</option>
                             <option value="CNWM">Central and North West London NHS Foundation Trust</option>
                             <option value="CLCH">Central London Community Healthcare NHS Trust</option>
-                            <option value="CWNHS">Chelsea and Westminster Healthcare NHS Foundation Trust</option>
+                            <option value="CWNHS">Chelsea and Westminster Healthcare NHS Foundation Trust (C&W site)</option>
+                            <option value="WESTMIDNHS">Chelsea and Westminster Healthcare NHS Foundation Trust (West Middlesex site)</option>
                             <option value="HILLINGNHS">Hillingdon Hospitals NHS Trust</option>
                             <option value="ICHNTCX">Imperial College Healthcare NHS Trust Charing Cross Hospital</option>
                             <option value="ICHNTHH">Imperial College Healthcare NHS Trust Hammersmith Hospital</option>
                             <option value="ICHNTSM">Imperial College Healthcare NHS Trust St Mary's Hospital</option>
-                            <option value="RBHRB">Royal Brompton and Harefield NHS Trust, Royal Brompton campus</option>
                             <option value="WLMEN">West London Mental Health NHS Trust</option>
-                            <option value="WESTMIDNHS">West Middlesex University Hospital NHS Trust</option>
                             <option value="OTHER">Other</option>
                         </select>
                         <br/><br/>
@@ -308,12 +454,12 @@
                         </select>
                     </div>
                     <label>What is the end date of your contract or placement?</label>
-                    <label class="small">If permanent, please enter 01-01-2039</label>
-                    <input class="datepicker" name="expiry_date_NHS" placeholder="dd-mm-yyyy" /><br/><br/><br/>
+                    <label class="small">If permanent, please enter 01-01-2037</label>
+                    <input class="datepicker" name="expiry_date_NHS" placeholder="dd-mm-yyyy" required><br/><br/><br/>
                     <label>What is the name of your department or course?</label>
-                    <input type="text" name="department_NHS" /><br/><br/>
+                    <input type="text" name="department_NHS" required><br/><br/>
                     <label>What is your work phone number?</label>
-                    <input type="text" name="phone_number_NHS" /><br/><br/>
+                    <input type="text" name="phone_number_NHS" required><br/><br/>
                     <label>Which hospital library will be your main library?</label>
                     <select name="campus_code_NHS" required>
                         <option selected="selected" value="">Please choose</option>                        
@@ -324,7 +470,7 @@
                         <option value="ST_MARYS">St Mary's Hospital</option>                
                     </select>
                     <label>What is your job title?</label>
-                    <select name="job_title_NHS">
+                    <select name="job_title_NHS" required>
                         <option selected="selected" value="">Please choose</option>
                         <option value="Accountant">Accountant</option>
                         <option value="Art">Art Therapist</option>
@@ -364,6 +510,7 @@
                         <option value="Music">Music Therapist</option>
                         <option value="Nurse">Nurse</option>
                         <option value="Nursery">Nursery Nurse</option>
+                        <option value="Nursing Associate">Nursing Associate</option>
                         <option value="Observer">Observer</option>
                         <option value="Occupational">Occupational Therapist</option>
                         <option value="Operating Department Practitioner">Operating Department Practitioner</option>
@@ -411,12 +558,12 @@
                         <option value="Youth Worker">Youth Worker</option>
                     </select>
                     <br/><br/><br/>
-                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
+                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
                 <br/><br/><br/>
-                <input type="checkbox" name="DPN" value="true" required>I agree to be bound by Imperial College ICT <a href="https://www.imperial.ac.uk/admin-services/secretariat/college-governance/charters-statutes-ordinances-and-regulations/policies-regulations-and-codes-of-practice/information-systems-security/iss-policies/policy2/">conditions of use of IT facilities</a>
+                <input type="checkbox" name="DPN" value="true" required>I agree to be bound by Imperial College ICT <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/conditions-of-use-for-it-facilities/">conditions of use of IT facilities</a>
                 <br/><br/><br/>
                     <label>Data Protection notice</label>
-                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information to provide services and to monitor library use. We do not disclose information about you to anyone else.</label>
+                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information, in accordance with our <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/data-protection/">data protection policy</a> to provide services and monitor library use. We do not disclose information about you to anyone else.</label>
                     <input type="checkbox" name="DPN" required>I accept the terms and conditions<br/><br/>
                 </fieldset><br/>
                 <div>
@@ -426,7 +573,7 @@
         </form>
          
         <!--Users from local institutions-->
-        <form action="reg_form.php" method="POST">
+        <form action="reg_form/reg_form.php" method="POST">
             <div id="user_group_CLLOCAL" class="user_group_input" style="display: none;">
                 <input type="hidden" name="user_group" value="CLLOCAL">
                 <fieldset>
@@ -435,6 +582,18 @@
                     <input type="text" name="first_name_CLLOCAL" required><br/><br/>
                     <label>What is your last name?</label>
                     <input type="text" name="last_name_CLLOCAL" required><br/><br/>
+                    <label>What is your title?</label>
+                    <select name="title_CLLOCAL" required>
+                        <option selected="selected" value="">Please choose</option>
+                        <option value="MX">Mx</option>
+                        <option value="MS">Ms</option>
+                        <option value="MISS">Miss</option>
+                        <option value="MR">Mr</option>
+                        <option value="MRS">Mrs</option>
+                        <option value="DR">Dr</option>
+                        <option value="PROF">Prof</option>
+                    </select>
+                    <br/><br/>
                     <label>What is your email address?</label>
                     <input type="email" name="email_address_CLLOCAL" id="email" required><br/><br/>
                     <label>What is your phone number?</label>
@@ -443,10 +602,10 @@
                 <fieldset>
                     <legend>Additional contact details</legend><br/>
                     <label>What is your postal address?</label><br/>
-                    <label>Street name 1</label><input type="text" name="line1_CLLOCAL" /><br/><br/>
+                    <label>Street name 1</label><input type="text" name="line1_CLLOCAL" required><br/><br/>
                     <label>Street name 2</label><input type="text" name="line2_CLLOCAL" /><br/><br/>
-                    <label>City</label><input type="text" name="city_CLLOCAL" /><br/><br/>
-                    <label>Postcode</label><input type="text" name="postcode_CLLOCAL" /><br/><br/>
+                    <label>City</label><input type="text" name="city_CLLOCAL" required><br/><br/>
+                    <label>Postcode</label><input type="text" name="postcode_CLLOCAL" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Registration details</legend><br/>
@@ -463,10 +622,10 @@
                         
                     </select>
                     <br/><br/>
-                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
+                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
                 <br/><br/><br/>
                     <label>Data Protection notice</label>
-                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information to provide services and to monitor library use. We do not disclose information about you to anyone else.</label>
+                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information, in accordance with our <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/data-protection/">data protection policy</a> to provide services and monitor library use. We do not disclose information about you to anyone else.</label>
                     <input type="checkbox" name="DPN" required>I accept the terms and conditions<br/><br/>
                 </fieldset><br/>
                 <div>
@@ -476,7 +635,7 @@
         </form>
 
         <!--Imperial College alumni users-->
-        <form action="reg_form.php" method="POST">
+        <form action="reg_form/reg_form.php" method="POST">
             <div id="user_group_ALLALUMNUS" class="user_group_input" style="display: none;">
                 <input type="hidden" name="user_group" value="ALLALUMNUS">
                 <fieldset>
@@ -485,18 +644,30 @@
                     <input type="text" name="first_name_ALUMNUS" required><br/><br/>
                     <label>What is your last name?</label>
                     <input type="text" name="last_name_ALUMNUS" required><br/><br/>
+                    <label>What is your title?</label>
+                    <select name="title_ALUMNUS" required>
+                        <option selected="selected" value="">Please choose</option>
+                        <option value="MX">Mx</option>
+                        <option value="MS">Ms</option>
+                        <option value="MISS">Miss</option>
+                        <option value="MR">Mr</option>
+                        <option value="MRS">Mrs</option>
+                        <option value="DR">Dr</option>
+                        <option value="PROF">Prof</option>
+                    </select>
+                    <br/><br/>
                     <label>What is your email address?</label>
                     <input type="email" name="email_address_ALUMNUS" id="email" required><br/><br/>
                     <label>What is your phone number?</label>
-                    <input type="text" name="phone_number_ALUMNUS" /><br/><br/>
+                    <input type="text" name="phone_number_ALUMNUS" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Additional contact details</legend><br/>
                     <label>What is your postal address?</label><br/>
-                    <label>Street name 1</label><input type="text" name="line1_ALUMNUS" /><br/><br/>
+                    <label>Street name 1</label><input type="text" name="line1_ALUMNUS" required><br/><br/>
                     <label>Street name 2</label><input type="text" name="line2_ALUMNUS" /><br/><br/>
-                    <label>City</label><input type="text" name="city_ALUMNUS" /><br/><br/>
-                    <label>Postcode</label><input type="text" name="postcode_ALUMNUS" /><br/><br/>
+                    <label>City</label><input type="text" name="city_ALUMNUS" required><br/><br/>
+                    <label>Postcode</label><input type="text" name="postcode_ALUMNUS" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Registration details</legend><br/>
@@ -505,37 +676,39 @@
                     <label>What is your former department?</label>
                     <select name="ucat1_ALUMNUS" required>
                         <option selected="selected" value="">Please choose</option>
-                        <option value="AERO">Aeronautics</option>
-                        <option value="AS">Agricultural Sciences</option>
-                        <option value="BCHM">Biochemistry</option>
+                        <option value="AE">Aeronautics</option>
                         <option value="BE">Bioengineering</option>
-                        <option value="BIOL">Biological Sciences</option>
-                        <option value="CEX">Chemical Engineering</option>
-                        <option value="CHEM">Chemistry</option>
-                        <option value="COMP">Computing</option>
+                        <option value="ICBS">Imperial College Business School</option>
+                        <option value="CP">Centre for Professional Development</option>
+                        <option value="CE">Chemical Engineering</option>
+                        <option value="CH">Chemistry</option>
+                        <option value="CI">Civil & Environmental Engineering</option>
+                        <option value="CO">Computing</option>
                         <option value="HUM">Department of Humanities</option>
                         <option value="DLS">Department of Life Sciences</option>
-                        <option value="MED">Department of Medicine</option>
+                        <option value="WM">Department of Medicine</option>
                         <option value="WS">Department of Surgery & Cancer</option>
-                        <option value="NQ">Faculty of Engineering</option>
-                        <option value="WQ">Faculty of Medicine Centre</option>
-                        <option value="NS">Faculty of Natural Science</option>
-                        <option value="PQ">Faculty of Physical Sciences</option>
+                        <option value="WC">Division of Clinical Sciences</option>
+                        <option value="EA">Earth Science and Engineering</option>
+                        <option value="EE">Electrical & Electronic Engineering</option>
                         <option value="GS">Graduate School</option>
-                        <option value="MMAT">Materials</option>
-                        <option value="MATH">Mathematics</option>
-                        <option value="MENG">Mechanical Engineering</option>
-                        <option value="PHYS">Physics</option>
-                        
+                        <option value="MM">Materials</option>
+                        <option value="MA">Mathematics</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="WH">National Heart & Lung Institute</option>
+                        <option value="PH">Physics</option>
+                        <option value="SM">School of Medicine</option>
+                        <option value="WP">School of Public Health</option>
                         <option value="XX">Other</option>
                     </select>
                     <br/><br/>
-                    <input type="checkbox" name="RO" required>I confirm that I have <a href="http://www.imperial.ac.uk/alumni/online-account/">registered online as an Imperial alumni</a><br/><br/>
-                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
-                    
+                    <input type="checkbox" name="RO" required>I confirm that I have <a target="_blank" href="http://www.imperial.ac.uk/alumni/online-account/">registered online as an Imperial alumni</a><br/><br/>
+                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
+                    <br/>
+                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by Imperial College ICT <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/conditions-of-use-for-it-facilities/">conditions of use of IT facilities</a>
                     <br/><br/><br/>
                     <label>Data Protection notice</label>
-                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information to provide services and to monitor library use. We do not disclose information about you to anyone else.</label>
+                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information, in accordance with our <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/data-protection/">data protection policy</a> to provide services and monitor library use. We do not disclose information about you to anyone else.</label>
                     <input type="checkbox" name="DPN" required>I accept the terms and conditions<br/><br/>
                 </fieldset><br/>
                 <div>
@@ -545,7 +718,7 @@
         </form>
          
         <!--Reference-only users-->
-        <form action="reg_form.php" method="POST">
+        <form action="reg_form/reg_form.php" method="POST">
             <div id="user_group_CLREF" class="user_group_input" style="display: none;">
                 <input type="hidden" name="user_group" value="CLREF">
                 <fieldset>
@@ -554,18 +727,30 @@
                     <input type="text" name="first_name_CLREF" required><br/><br/>
                     <label>What is your last name?</label>
                     <input type="text" name="last_name_CLREF" required><br/><br/>
+                    <label>What is your title?</label>
+                    <select name="title_CLREF" required>
+                        <option selected="selected" value="">Please choose</option>
+                        <option value="MX">Mx</option>
+                        <option value="MS">Ms</option>
+                        <option value="MISS">Miss</option>
+                        <option value="MR">Mr</option>
+                        <option value="MRS">Mrs</option>
+                        <option value="DR">Dr</option>
+                        <option value="PROF">Prof</option>
+                    </select>
+                    <br/><br/>
                     <label>What is your email address?</label>
                     <input type="email" name="email_address_CLREF" id="email" required><br/><br/>
                     <label>What is your phone number?</label>
-                    <input type="text" name="phone_number_CLREF" /><br/><br/>
+                    <input type="text" name="phone_number_CLREF" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Additional contact details</legend><br/>
                     <label>What is your postal address?</label><br/>
-                    <label>Street name 1</label><input type="text" name="line1_CLREF" /><br/><br/>
+                    <label>Street name 1</label><input type="text" name="line1_CLREF" required><br/><br/>
                     <label>Street name 2</label><input type="text" name="line2_CLREF" /><br/><br/>
-                    <label>City</label><input type="text" name="city_CLREF" /><br/><br/>
-                    <label>Postcode</label><input type="text" name="postcode_CLREF" /><br/><br/>
+                    <label>City</label><input type="text" name="city_CLREF" required><br/><br/>
+                    <label>Postcode</label><input type="text" name="postcode_CLREF" required><br/><br/>
                 </fieldset><br/>
                 <fieldset>
                     <legend>Registration details </legend><br/>
@@ -651,10 +836,69 @@
                     <textarea title="Please identify specific resources that you require for your research. You can use Library Search to identify any specific resources of interest. Access to the library simply for the use of study space is not normally allowed." name="library_use_CLREF" rows="10" cols="50" required></textarea><br/>
                     <br/>
                     <input type="checkbox" name="DPN" value="true" required>I understand that my application will be assessed for validity and that membership is not automatically granted
+                    <br/>
+                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by Imperial College ICT <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/conditions-of-use-for-it-facilities/">conditions of use of IT facilities</a>
                     <br/><br/><br/>
                     <label>Data Protection notice</label>
-                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information to provide services and to monitor library use. We do not disclose information about you to anyone else.</label>
+                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information, in accordance with our <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/data-protection/">data protection policy</a> to provide services and monitor library use. We do not disclose information about you to anyone else.</label>
                     <input type="checkbox" name="DPN" required>I accept the terms and conditions<br/>
+                </fieldset><br/>
+                <div>
+                    <input type="submit" name="submit" value="Submit">
+                </div>
+            </div>
+        </form>
+        
+        <!--MRC staff-->
+        <form action="reg_form/reg_form.php" method="POST">
+            <div id="user_group_MRC" class="user_group_input" style="display: none;">
+                <input type="hidden" name="user_group" value="MRC">
+                <fieldset>
+                    <legend>Personal details</legend><br/>
+                    <label>What is your first name?</label>
+                    <input type="text" name="first_name_MRC" required><br/><br/>
+                    <label>What is your last name?</label>
+                    <input type="text" name="last_name_MRC" required><br/><br/>
+                    <label>What is your title?</label>
+                    <select name="title_MRC" required>
+                        <option selected="selected" value="">Please choose</option>
+                        <option value="MX">Mx</option>
+                        <option value="MS">Ms</option>
+                        <option value="MISS">Miss</option>
+                        <option value="MR">Mr</option>
+                        <option value="MRS">Mrs</option>
+                        <option value="DR">Dr</option>
+                        <option value="PROF">Prof</option>
+                    </select>
+                    <br/><br/>
+                    <label>What is your email address?</label>
+                    <input type="email" name="email_address_MRC" id="email" required><br/><br/>
+                </fieldset><br/>
+                <fieldset>
+                    <legend>Additional contact details</legend><br/>
+                    <label>What is your address?</label><br/>
+                    <label>Street name 1</label><input type="text" name="line1_MRC" required><br/><br/>
+                    <label>Street name 2</label><input type="text" name="line2_MRC" /><br/><br/>
+                    <label>City</label><input type="text" name="city_MRC" required><br/><br/>
+                    <label>Postcode</label><input type="text" name="postcode_MRC" required><br/><br/>
+                </fieldset><br/>
+                <fieldset>
+                    <legend>Registration details </legend><br/>
+                    <label for="primary_id_MRC">Please enter the library number from your card</label>
+                    <input type="text" name="primary_id_MRC" required><br/><br/>
+                    <label>What is your research section?</label>
+                    <select name="research_MRC" required>
+                        <option selected="selected" value="">Please choose</option>
+                        <option value="epigenetics">Epigenetics</option>
+                        <option value="genes">Genes & Metabolism</option>
+                        <option value="integrative_biology">Integrative Biology</option>
+                    </select>
+                    <br/><br/><br/>
+                    <input type="checkbox" name="DPN" value="true" required>I agree to be bound by the Library Service's <a target="_blank" href="https://www.imperial.ac.uk/admin-services/library/about-us/library-regulations/">rules and regulations</a>
+                <br/><br/><br/>
+                    <label>Data Protection notice</label>
+                    <label class="small">The personal information that you provide will be processed in accordance with the Data Protection Act 1998.  Your library record includes your name and contact details. We use this information, in accordance with our <a href="https://www.imperial.ac.uk/admin-services/library/about-us/library-policies/data-protection/">data protection policy</a> to provide services and monitor library use. We do not disclose information about you to anyone else.</label>
+                    <input type="checkbox" name="DPN" required>I accept the terms and conditions<br/><br/>
                 </fieldset><br/>
                 <div>
                     <input type="submit" name="submit" value="Submit">
